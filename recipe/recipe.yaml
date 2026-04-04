@@ -16,17 +16,18 @@ build:
       CARGO_PROFILE_RELEASE_STRIP: symbols
       CARGO_PROFILE_RELEASE_LTO: fat
     content:
+      - cd cli
       - if: linux
         then:
           # cf. https://github.com/stakpak/agent/blob/main/cli/src/main.rs#L17
-          - cargo auditable install --locked --no-track --bins --features jemalloc --root ${{ PREFIX }} --path cli
+          - cargo auditable install --locked --no-track --bins --features jemalloc --root ${{ PREFIX }} --path .
       - if: osx
         then:
-          - cargo auditable install --locked --no-track --bins --root ${{ PREFIX }} --path cli
+          - cargo auditable install --locked --no-track --bins --root ${{ PREFIX }} --path .
       - if: win
         then:
-          - cargo auditable install --locked --no-track --bins --root %LIBRARY_PREFIX% --path cli
-      - cargo-bundle-licenses --format yaml --output ./THIRDPARTY.yml
+          - cargo auditable install --locked --no-track --bins --root %LIBRARY_PREFIX% --path .
+      - cargo-bundle-licenses --format yaml --output ../THIRDPARTY.yml
 
 requirements:
   build:
