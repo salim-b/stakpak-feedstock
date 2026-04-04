@@ -42,10 +42,8 @@ requirements:
 
 tests:
   - script:
-      - if: build_platform == host_platform
-        then:
-          - stakpak help
-          - stakpak version
+      - stakpak help
+      - stakpak version
   - package_contents:
       bin:
         - stakpak
