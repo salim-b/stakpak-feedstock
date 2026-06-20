@@ -3,13 +3,15 @@ About stakpak-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/stakpak-feedstock/blob/main/LICENSE.txt)
 
-Home: https://stakpak.io/
+Home: https://stakpak.dev/
 
 Package license: Apache-2.0
 
 Summary: Stakpak – Ship your code, on autopilot.
 
 Development: https://github.com/stakpak/agent
+
+Documentation: https://stakpak.gitbook.io/
 
 Stakpak is the open source DevOps agent that helps you with securing, deploying, and maintaining production ready infrastructure and only pings when it needs a human.
 Generate infrastructure code, debug Kubernetes, configure CI/CD, automate deployments, without giving an LLM the keys to production.
