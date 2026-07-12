@@ -30,8 +30,8 @@ requirements:
     - ${{ stdlib('c') }}
     - ${{ compiler('c') }}
     - ${{ compiler('rust') }}
-    - cargo-bundle-licenses
     - cargo-auditable
+    - cargo-bundle-licenses
     - pkg-config
     - if: linux
       then: make
