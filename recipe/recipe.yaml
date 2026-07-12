@@ -13,6 +13,7 @@ build:
   number: 0
   script:
     env:
+      AWS_LC_SYS_CMAKE_BUILDER: ${{ "1" if host_platform == "win-arm64" else "0" }} # force CMake builder for `aws-lc-sys` native C/C++ code on `win-arm64`
       CARGO_PROFILE_RELEASE_LTO: fat
       CARGO_PROFILE_RELEASE_STRIP: symbols
     content:
@@ -32,6 +33,7 @@ requirements:
     - ${{ compiler('rust') }}
     - cargo-auditable
     - cargo-bundle-licenses
+    - cmake
     - pkg-config
     - if: linux
       then: make
