@@ -13,9 +13,13 @@ build:
   number: 0
   script:
     env:
-      AWS_LC_SYS_CMAKE_BUILDER: ${{ "1" if host_platform == "win-arm64" else "0" }} # force CMake builder for `aws-lc-sys` native C/C++ code on `win-arm64`
+      AWS_LC_SYS_CMAKE_BUILDER: ${{ "1" if win else "0" }} # force CMake builder for `aws-lc-sys` native C/C++ code on Windows
       CARGO_PROFILE_RELEASE_LTO: fat
       CARGO_PROFILE_RELEASE_STRIP: symbols
+      # instruct `cc` crate to use clang-cl natively to compile build-time tools intended to be run on the host when cross-compiling from `win_64` (fixes compilation of `libsql-sqlite3-parser`)
+      AR_x86_64_pc_windows_msvc: llvm-lib
+      CC_x86_64_pc_windows_msvc: clang-cl
+      CXX_x86_64_pc_windows_msvc: clang-cl
     content:
       - cd cli
       - if: unix
@@ -37,6 +41,8 @@ requirements:
     - pkg-config
     - if: linux
       then: make
+    - if: win
+      then: clang
 
 tests:
   - script:
